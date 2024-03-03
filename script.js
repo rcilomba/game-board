@@ -13,7 +13,11 @@ let score = 0;
 
 function updateScore() {
   score++;
-  scoreCounter.innerHTML = score;
+  scoreCounter.innerHTML = score.toString().padStart(5, "0");
+
+  if (score === maxScore) {
+    endGame();
+  }
 }
 
 for (let i = 1; i <= 100; i++) {
@@ -37,4 +41,8 @@ while (bombsList.length < totalBombs) {
   }
 }
 
-console.log(bombsList);
+function endGame() {
+  endGameText.innerHTML = "YOU<br>WON";
+  endGameScreen.classList.add("win");
+  endGameScreen.classList.remove("hidden");
+}
