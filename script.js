@@ -25,6 +25,11 @@ for (let i = 1; i <= 100; i++) {
   cell.classList.add("cell");
 
   cell.addEventListener("click", function () {
+    if (bombsList.includes(i)) {
+      cell.classList.add("cell-bomb");
+      endGame();
+    }
+
     cell.classList.add("cell-clicked");
     updateScore();
   });
@@ -46,3 +51,7 @@ function endGame() {
   endGameScreen.classList.add("win");
   endGameScreen.classList.remove("hidden");
 }
+
+playAgainButton.addEventListener("click", function () {
+  window.location.reload();
+});
