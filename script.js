@@ -5,8 +5,8 @@ const endGameText = document.querySelector(".end-game-text");
 const playAgainButton = document.querySelector(".play-again");
 
 const totalCells = 100;
-const totalBombs = 90; //90 för att testa spelet
-const maxScore = 5;
+const totalBombs = 15;
+const maxScore = 15;
 const bombsList = [];
 
 let score = 0;
@@ -27,7 +27,7 @@ for (let i = 1; i <= 100; i++) {
   cell.addEventListener("click", function () {
     if (bombsList.includes(i)) {
       cell.classList.add("cell-bomb");
-      endGame();
+      endGame(false);
     }
 
     cell.classList.add("cell-clicked");
@@ -46,9 +46,12 @@ while (bombsList.length < totalBombs) {
   }
 }
 
-function endGame() {
-  endGameText.innerHTML = "YOU<br>WON";
-  endGameScreen.classList.add("win");
+function endGame(isVictory) {
+  if (isVictory) {
+    endGameText.innerHTML = "YOU<br>WON";
+    endGameScreen.classList.add("win");
+  }
+
   endGameScreen.classList.remove("hidden");
 }
 
